@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gz-sim
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gz-sim
+  template:
+    metadata:
+      labels:
+        app: gz-sim
+    spec:
+      hostNetwork: true
+      tolerations:
+        - key: node.kubernetes.io/not-ready
+          operator: Exists
+          effect: NoSchedule
+        - key: node.kubernetes.io/unreachable
+          operator: Exists
+          effect: NoSchedule
+      containers:
+        - name: gz-sim
+          image: localhost:5000/gz_sim:latest
+          imagePullPolicy: IfNotPresent
+          resources:
+            limits:
+              ephemeral-storage: "10Gi"
+            requests:
+              ephemeral-storage: "1Gi"
+          volumeMounts:
+            - name: gz-assets
+              mountPath: /gz_assets
+          args: ["-s", "test_world.sdf"]
+      volumes:
+        - name: gz-assets
+          hostPath:
+            path: gz_assets
+            type: Directory
