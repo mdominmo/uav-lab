@@ -37,4 +37,4 @@ ENV GZ_PARTITION=px4
 ENV GZ_RELAY=1
 
 ENTRYPOINT ["/entrypoint.sh"]
-CMD ["/world/test_world/model/x500_mono_cam_3/link/mono_cam/base_link/sensor/camera/image"]
+CMD ["/world/test_world/model/x500_mono_cam_1/link/mono_cam/base_link/sensor/camera/image"]

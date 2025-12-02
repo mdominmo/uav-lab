@@ -1,0 +1,23 @@
+world: 
+  type: "riai_planner_paper_world"
+  dayLight: "day"
+  global_origin:
+    lat: 47.397971057728974
+    lon: 8.5461637398001464
+    alt: 0.0
+UAS:
+  swarm_pose:
+    x: 90
+    y: -81
+    z: 3
+    R: 0
+    P: 0
+    Y: 0.0
+  leader_id: "x500_mono_cam_1"
+  models:
+  - name: "x500_vision"
+    autostart: 4005
+    number: 2
+  - name: "rc_cessna"
+    autostart: 4003
+    number: 0
